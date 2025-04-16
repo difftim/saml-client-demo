@@ -57,7 +57,7 @@ func main() {
 		panic(err) // TODO handle error
 	}
 
-	rootURL, err := url.Parse("http://localhost:8000")
+	rootURL, err := url.Parse("http://localhost:7000")
 	if err != nil {
 		panic(err) // TODO handle error
 	}
@@ -77,7 +77,7 @@ func main() {
 	http.Handle("/logout", slo)
 
 	server := &http.Server{
-		Addr:              ":8080",
+		Addr:              ":7777",
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 	log.Fatal(server.ListenAndServe())
