@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"time"
 
 	"github.com/crewjam/saml/samlsp"
@@ -18,63 +19,131 @@ import (
 var samlMiddleware *samlsp.Middleware
 
 func hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, %s!", samlsp.AttributeFromContext(r.Context(), "displayName"))
+	// 记录会话中的属性
+	log.Println("用户成功认证，会话属性:")
+
+	// 记录所有可用的属性
+	ctx := r.Context()
+	log.Printf("  NameID: %s", samlsp.AttributeFromContext(ctx, "name_id"))
+	log.Printf("  SessionIndex: %s", samlsp.AttributeFromContext(ctx, "session_index"))
+	log.Printf("  DisplayName: %s", samlsp.AttributeFromContext(ctx, "displayName"))
+	log.Printf("  Email: %s", samlsp.AttributeFromContext(ctx, "email"))
+	log.Printf("  CommonName: %s", samlsp.AttributeFromContext(ctx, "cn"))
+	log.Printf("  SubjectID: %s", samlsp.AttributeFromContext(ctx, "urn:oasis:names:tc:SAML:attribute:subject-id"))
+
+	displayName := samlsp.AttributeFromContext(r.Context(), "displayName")
+	log.Printf("用户访问 hello 页面: %s", displayName)
+	fmt.Fprintf(w, "Hello, Saml2.0 %s!", displayName)
 }
 
 func logout(w http.ResponseWriter, r *http.Request) {
 	nameID := samlsp.AttributeFromContext(r.Context(), "urn:oasis:names:tc:SAML:attribute:subject-id")
 	url, err := samlMiddleware.ServiceProvider.MakeRedirectLogoutRequest(nameID, "")
 	if err != nil {
-		panic(err) // TODO handle error
+		log.Printf("创建登出请求错误: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
 	}
 
 	err = samlMiddleware.Session.DeleteSession(w, r)
 	if err != nil {
-		panic(err) // TODO handle error
+		log.Printf("删除会话错误: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
 	}
 
 	w.Header().Add("Location", url.String())
 	w.WriteHeader(http.StatusFound)
+	log.Printf("用户登出成功，重定向到: %s", url.String())
 }
 
 func main() {
+	// 配置日志输出到文件
+	logFile, err := os.OpenFile("saml_debug.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		log.Fatalf("无法打开日志文件: %v", err)
+	}
+	defer logFile.Close()
+	log.SetOutput(logFile)
+	log.Println("SAML服务启动...")
+
 	keyPair, err := tls.LoadX509KeyPair("myservice.cert", "myservice.key")
 	if err != nil {
-		panic(err) // TODO handle error
+		log.Fatalf("加载证书错误: %v", err)
 	}
 	keyPair.Leaf, err = x509.ParseCertificate(keyPair.Certificate[0])
 	if err != nil {
-		panic(err) // TODO handle error
+		log.Fatalf("解析证书错误: %v", err)
 	}
 
 	idpMetadataURL, err := url.Parse("https://sso.test.biuel.com/saml/v2/metadata")
 	if err != nil {
-		panic(err) // TODO handle error
+		log.Fatalf("解析IdP元数据URL错误: %v", err)
 	}
 	idpMetadata, err := samlsp.FetchMetadata(context.Background(), http.DefaultClient,
 		*idpMetadataURL)
 	if err != nil {
-		panic(err) // TODO handle error
+		log.Fatalf("获取IdP元数据错误: %v", err)
 	}
 
-	rootURL, err := url.Parse("http://localhost:7000")
+	//
+	rootURL, err := url.Parse("https://srv.bdb.im/sso/")
 	if err != nil {
-		panic(err) // TODO handle error
+		log.Fatalf("解析根URL错误: %v", err)
 	}
+
+	// 记录配置的URL
+	log.Printf("配置的根URL: %s", rootURL.String())
+	log.Printf("预期的元数据URL: %s", rootURL.ResolveReference(&url.URL{Path: "saml/metadata"}).String())
 
 	samlMiddleware, _ = samlsp.New(samlsp.Options{
+		EntityID:    "samltest",
 		URL:         *rootURL,
 		Key:         keyPair.PrivateKey.(*rsa.PrivateKey),
 		Certificate: keyPair.Leaf,
 		IDPMetadata: idpMetadata,
 		SignRequest: true, // some IdP require the SLO request to be signed
 	})
+
+	// 记录详细的SAML配置信息
+	log.Printf("SAML配置详情:")
+	log.Printf("  EntityID: %s", samlMiddleware.ServiceProvider.EntityID)
+	log.Printf("  ACS URL: %s", samlMiddleware.ServiceProvider.AcsURL)
+	log.Printf("  Metadata URL: %s", samlMiddleware.ServiceProvider.MetadataURL)
+	log.Printf("  SLO URL: %s", samlMiddleware.ServiceProvider.SloURL)
+
+	// 打印ServiceProvider的完整配置
+	log.Printf("ServiceProvider配置:")
+	log.Printf("  EntityID: %s", samlMiddleware.ServiceProvider.EntityID)
+	log.Printf("  MetadataURL: %s", samlMiddleware.ServiceProvider.MetadataURL)
+	log.Printf("  AcsURL: %s", samlMiddleware.ServiceProvider.AcsURL)
+	log.Printf("  SloURL: %s", samlMiddleware.ServiceProvider.SloURL)
+
 	app := http.HandlerFunc(hello)
 	slo := http.HandlerFunc(logout)
 
-	http.Handle("/hello", samlMiddleware.RequireAccount(app))
-	http.Handle("/saml/", samlMiddleware)
-	http.Handle("/logout", slo)
+	// 创建请求记录器中间件
+	requestLogger := func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			log.Printf("收到请求: %s %s", r.Method, r.URL.Path)
+			next.ServeHTTP(w, r)
+		})
+	}
+
+	// 注册路由
+	http.Handle("/sso/hello", requestLogger(samlMiddleware.RequireAccount(app)))
+	http.Handle("/sso/logout", requestLogger(slo))
+
+	// 注册SAML相关的路由，处理包含/sso前缀的请求
+	http.Handle("/sso/saml/metadata", requestLogger(samlMiddleware))
+	http.Handle("/sso/saml/acs", requestLogger(samlMiddleware))
+	http.Handle("/sso/saml/slo", requestLogger(samlMiddleware))
+
+	// 添加一个测试路由，用于验证服务器是否正常运行
+	http.HandleFunc("/sso/test", func(w http.ResponseWriter, r *http.Request) {
+		log.Printf("测试路由被访问")
+		fmt.Fprintf(w, "服务器正常运行")
+	})
 
 	server := &http.Server{
 		Addr:              ":7777",
