@@ -1,0 +1,87 @@
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://sso.difft.org/saml/v2/metadata" ID="_5815da92-5cc5-431f-b7c8-7f7ba499eb2d">
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+<SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+<CanonicalizationMethod xmlns="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+<SignatureMethod xmlns="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+<Reference xmlns="http://www.w3.org/2000/09/xmldsig#" URI="#_5815da92-5cc5-431f-b7c8-7f7ba499eb2d">
+<Transforms xmlns="http://www.w3.org/2000/09/xmldsig#">
+<Transform xmlns="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<Transform xmlns="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</Transforms>
+<DigestMethod xmlns="http://www.w3.org/2000/09/xmldsig#" Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<DigestValue xmlns="http://www.w3.org/2000/09/xmldsig#">NPjsw2aHgfZfQyi0+PeKyu7pIYgPlyR9vOSr+8Bd9BI=</DigestValue>
+</Reference>
+</SignedInfo>
+<SignatureValue xmlns="http://www.w3.org/2000/09/xmldsig#">dtI2otqQ7AImvRNKC7dTVuVOLdm3tsNQwkvyK+evE/DwHnjOZ5BNtXRNECAALUxpIu6gVjnhSZmMjdllPWXOmDstRP9074+P1QdzarMkDA69t1BCPAAZEhaEGBc/K3SvY0etqlVjSKe9b6NlbM1/vp6oEZ5xBAp4lmSYXYz5g3x046isRCBHjQfxTTvZ7qp6nAEN5ek2h4MuyZVHSQnirr5347FNtCFvFgqjmTAKlb/5mgNnbUCfLHTWFS8/Qgnby+9k0otRMXVuUtZ3173pXoAKeGO0UkFFiaVOZzuPtOlYDF7J99ozl8Af+BxJZbUtdiUuC77uoVEgivDT2b3rAJaSTRTzOqsRXOeM3eSTw4oJlVJ21GDWr+HampLCkZ96whGaZkAvRo4KPkWwBhIuGFHTVq+4n/o1QwwO4oocGnFte7Th++rMFzEG4TlpALCoufZZJBlC5QhtndKayPqKCTDvUijEpQKOr9jSM4sIxNTeubQ6yRKQkJd31Tr+jI6CRgQ1WzYR4NPSbYCea8U8PhwII+/Y8GpIqU04umxhqtOGCEcDqMQt/NDWEg+x5A9bb23GagWiZMO6UFEuNUIHI9U6+B9FFKwit/pIk2BfhzA5+g0iA1BnUcedTt/wo/MUnjzkRIksmG9pKj/IhT6D/yPXmBT8zyLVEqENH0M+BEY=</SignatureValue>
+<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+<X509Data xmlns="http://www.w3.org/2000/09/xmldsig#">
+<X509Certificate xmlns="http://www.w3.org/2000/09/xmldsig#">MIIFIjCCAwqgAwIBAgICApMwDQYJKoZIhvcNAQELBQAwLDEQMA4GA1UEChMHWklUQURFTDEYMBYGA1UEAxMPWklUQURFTCBTQU1MIENBMB4XDTI1MDQxNDAzMDMwMVoXDTI2MDQxNDA5MDMwMVowMjEQMA4GA1UEChMHWklUQURFTDEeMBwGA1UEAxMVWklUQURFTCBTQU1MIG1ldGFkYXRhMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4YYgXmlWQjKSxnpM4ozvsOE3QiHmf4TPUPaaaR9ykw3eFOXmspcuc++SQ+RexkCXdwwy4Qz5u+l3jpLtkuFgwrikn9SL3VrRS5A4z6W58rqggll8jGOnHDt5W/JPSv/Wh540FwlEe54EyzcNoPlTZ/d8879NxomGv6Qxonn6s+FIxn9s9UfA23m+OGytk5ghqBbVB/gc3Xd7d1g9enFzebbTyoGjJmMK7Is3uGV+85aHS67YAyeDGPt+Q4IcEeFRbcbNcHlhurOHfUW7OkTM3AgI5lJ9Qmp8PixmzifxtGZHMfxWPzSM9YWsgZ/Yss6SYt9oDKzYxQG9FSQp18cn5vbODPYHWjhCV3xBM8g4+UAH5wElPovbqkJkqlXz7V8UibVelf0GS8f/vkqgAUljSO43aRVVOfTxeeB5t7qfFgUuVYj2on2zY4CWSQo6yTruQH2oLLYH4fhOIuInaQM32gM4u3uTKlK2h+byQjnL5mpftKjD7sq1efi2wlGG+PPx/ji4tKr/KEMMlB0iaK02WkyRQTVmhjajamJJCIMwcsnW6wgKq2Xe16eoEREZ+WvOztx1cEMqcrYYgDSLf64PMSHDi8rV89402q2a2YPw8moea4Asxf3CET/EQ4QyEbJ45F0csqnkQ/dnMJE3SD9mFrCU3MmwPxmkv1w1AP1QueMCAwEAAaNIMEYwDgYDVR0PAQH/BAQDAgWgMBMGA1UdJQQMMAoGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFCSyuCYJ2Azq7zmtHDlQy82TV9fGMA0GCSqGSIb3DQEBCwUAA4ICAQAY833p3asvvoaFLxSEyOO+RynLUY49efS6reAC35J/jvFZlfyJZvzuivDDRx6RfklDPaDpZLxRxeVYjHhgF+71rVR+Xf0i43FdLT3wllK8kM+BE1LBGl/Ayspjo9cenCQL9Eww3DQvSwcRl567ek4XhBB0BB9dJWfYiwhWEi0HSk6u9+jxLLLQK1g19F0yKpALXKDo8V4mQF+QLbSCNHwKTXE3SNpraMHen3DYD0UDhH6CgRCmytQ2FTkNQkYRNTayVBOhzHtb37h2oCGG3hV8LJi/A1xnd239XB7fhLicXWFM5LjeYok4vqbTbK+kfkm16zsCyQw0zApPttngk1ZcTVRrjvOe1/2WRw1jvSpvOlqUCL5SWZqBcceDTqZEGQuoa7XjPIoeAZJQPofEdTKVGLLAxJv8nnQqTXhBfi5zG5aD8WezzwEBN2y/mZAzkPIt2+pmsZ35QQCaI56AiI/4Op9BRS3A2uhc2fYW2yiIpTXIoxxe/q1UbbDZ5EXB1Vg9FhNqcz3DboDMQSyymgfL1Xl94leZSiPa+na8Xy/hhKq3R9lVGokoCNh/iY8D3rAYJTj5QCUDUSKhxbOm2oeKB+8zFWcY15uu2uF9yJfDFqFYrpTaRkdQcqEpdIai0+9kZnRZ+TWsi9F6ClKkU59vKHrFbeWyZYpWCHmmcK4xiA==</X509Certificate>
+</X509Data>
+</KeyInfo>
+</Signature>
+<IDPSSODescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" WantAuthnRequestsSigned="1" ID="_9b35b235-70fe-4350-95a9-7c8e4ad09f14" validUntil="2025-06-12T14:04:40.456Z" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+<SingleSignOnService xmlns="urn:oasis:names:tc:SAML:2.0:metadata" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://sso.difft.org/saml/v2/SSO"/>
+<SingleSignOnService xmlns="urn:oasis:names:tc:SAML:2.0:metadata" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://sso.difft.org/saml/v2/SSO"/>
+<AttributeProfile>urn:oasis:names:tc:SAML:2.0:profiles:attribute:basic</AttributeProfile>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="Email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="SurName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="FirstName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="FullName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="UserName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="UserID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<SingleLogoutService xmlns="urn:oasis:names:tc:SAML:2.0:metadata" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://sso.difft.org/saml/v2/SLO"/>
+<SingleLogoutService xmlns="urn:oasis:names:tc:SAML:2.0:metadata" Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://sso.difft.org/saml/v2/SLO"/>
+<NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</NameIDFormat>
+<KeyDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" use="signing">
+<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+<KeyName>https://sso.difft.org/saml/v2/metadata IDP signing</KeyName>
+<X509Data xmlns="http://www.w3.org/2000/09/xmldsig#">
+<X509Certificate xmlns="http://www.w3.org/2000/09/xmldsig#">MIIFIjCCAwqgAwIBAgICA6AwDQYJKoZIhvcNAQELBQAwLDEQMA4GA1UEChMHWklUQURFTDEYMBYGA1UEAxMPWklUQURFTCBTQU1MIENBMB4XDTI0MDcwOTA2MTgyOVoXDTI1MDcwOTEyMTgyOVowMjEQMA4GA1UEChMHWklUQURFTDEeMBwGA1UEAxMVWklUQURFTCBTQU1MIHJlc3BvbnNlMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAspnEGqFkflSTGbRCf0iZuqBXJEzY0RJcs0grf+gJrWle5npVFAI/Rb8pWH6Gu3YPB8y0iueURZBq09+3flHFRfoBzPYnE0+uZlt8sAKHEkbPFY5UFGI8lPltWWqFP+sXx6HKKyvzTwJQLO6h4tSDeKlMgyTrZsoKX/3F8k+XGl6CBy4tjVaXoQPFrgKNEtLp8+os0Vx6QaaxIb9VuRWpEFwCu7Lb275+c0QaOvZPkESb9NmcXkWawJX5CqH2hBQs86ERpqs3K0UGn73pPZTjoPMAnNrU/9i6ukbc+kaB9sK/9q/PaqLob/5vytCq5UI/vn0WoqHfu6hfD6eWAWTISzsNZ3M+egCw9Kp66D+vmQUIV13/GeEH0ukqOPydWa5Tp0ZPf8EhiG1PTooxnNIP0DT0Kd9lH7glPXF/EiPHVptmB3AoBajtqlEQBNLpwVZ7VtO36xuezrhJEEX77dulzMSEIknJQEs0PiKf4DjeA0kmcglqoN3WMIeSWzDG/HpQLHzbKQnooLtyLleV9gBbKeKZsC8VzIirf4MdTwFKxCMV1Oe+C+PDcsyOaYRh91S5yTe3PBPq6Gsh/W4T6vH8U54clrJtlAXO8UgDpP7dWE1db1iKAyIawXx55S3R/TCRb1oqc1FYBRBkfYSo+0nfDsrjX54WBrBIe+n4gs9RYXcCAwEAAaNIMEYwDgYDVR0PAQH/BAQDAgWgMBMGA1UdJQQMMAoGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFCSyuCYJ2Azq7zmtHDlQy82TV9fGMA0GCSqGSIb3DQEBCwUAA4ICAQCYoM2xGfT3usRZPFT++yH20hlabrIHn4OVw/KgthSgikuSeQSuXmhaoUbmCbOP3xNLyOgi0RAEDq76DpCDzMkw/Iz+bT1JAjDaqWt0cJaC3SESvvs4JNr6bMaCvbrVE5emRf403NhihUNkwzs4FZVph5utJhhFvfGQfPnXI4DY1FGV5OF44NjcyjNVY/UhotIz/qWQ90yOzbBURW4ltMGNlT5ZPdM6k0mG/CXYT7NkjPaYdFZPhAtIn++lVwukn9IE0DN+YtyfjVLWzN6qalbMKe+5LLa9dGnIRM3gUay0sCF3tJY3FFIynXRnb62RAdvDYUF1gSpBINsWj+tCSopCw0YxuU4KNqeh9u94a4+aJij4Re3tHmOthDpQ2BO2gQ5cpPuR8Pi1CttpEPQtl+8BIwLAEKiEgZRQGdB22P1tXRykfkZRYswGnaNICVimfb50jR+X3Jw7dOT0mIHhL3ypqNIrQD/uX4jArO1a2WWR73dBRuq8M+kHr1gUXFHByVUTYcbO7yyVBUWeMFzqeqqijhEvJrSPlJA7VWSC9eHtQ25O6hmO4V/sXgpNSFGTjoDPPCDa3EyAi6o7BnhgCv0I1xzan4ga7Yh+kE72kjsUaiA34pJUQ2h6CWZik6CBIYjYTSX1BbjJDGPL6MeJrnu/pUEoxnSQaVntfw3b7qdmDQ==</X509Certificate>
+</X509Data>
+</KeyInfo>
+</KeyDescriptor>
+</IDPSSODescriptor>
+<AttributeAuthorityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="_3a100fc3-ed25-40a0-9f43-0e83ad32a016" validUntil="2025-06-12T14:04:40.456Z" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+<AttributeService xmlns="urn:oasis:names:tc:SAML:2.0:metadata" Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://sso.difft.org/saml/v2/attribute"/>
+<NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</NameIDFormat>
+<AttributeProfile>urn:oasis:names:tc:SAML:2.0:profiles:attribute:basic</AttributeProfile>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="Email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="SurName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="FirstName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="FullName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="UserName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<Attribute xmlns="urn:oasis:names:tc:SAML:2.0:assertion" Name="UserID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic">
+<AttributeValue/>
+</Attribute>
+<KeyDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" use="signing">
+<KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#">
+<KeyName>https://sso.difft.org/saml/v2/metadata IDP signing</KeyName>
+<X509Data xmlns="http://www.w3.org/2000/09/xmldsig#">
+<X509Certificate xmlns="http://www.w3.org/2000/09/xmldsig#">MIIFIjCCAwqgAwIBAgICA6AwDQYJKoZIhvcNAQELBQAwLDEQMA4GA1UEChMHWklUQURFTDEYMBYGA1UEAxMPWklUQURFTCBTQU1MIENBMB4XDTI0MDcwOTA2MTgyOVoXDTI1MDcwOTEyMTgyOVowMjEQMA4GA1UEChMHWklUQURFTDEeMBwGA1UEAxMVWklUQURFTCBTQU1MIHJlc3BvbnNlMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAspnEGqFkflSTGbRCf0iZuqBXJEzY0RJcs0grf+gJrWle5npVFAI/Rb8pWH6Gu3YPB8y0iueURZBq09+3flHFRfoBzPYnE0+uZlt8sAKHEkbPFY5UFGI8lPltWWqFP+sXx6HKKyvzTwJQLO6h4tSDeKlMgyTrZsoKX/3F8k+XGl6CBy4tjVaXoQPFrgKNEtLp8+os0Vx6QaaxIb9VuRWpEFwCu7Lb275+c0QaOvZPkESb9NmcXkWawJX5CqH2hBQs86ERpqs3K0UGn73pPZTjoPMAnNrU/9i6ukbc+kaB9sK/9q/PaqLob/5vytCq5UI/vn0WoqHfu6hfD6eWAWTISzsNZ3M+egCw9Kp66D+vmQUIV13/GeEH0ukqOPydWa5Tp0ZPf8EhiG1PTooxnNIP0DT0Kd9lH7glPXF/EiPHVptmB3AoBajtqlEQBNLpwVZ7VtO36xuezrhJEEX77dulzMSEIknJQEs0PiKf4DjeA0kmcglqoN3WMIeSWzDG/HpQLHzbKQnooLtyLleV9gBbKeKZsC8VzIirf4MdTwFKxCMV1Oe+C+PDcsyOaYRh91S5yTe3PBPq6Gsh/W4T6vH8U54clrJtlAXO8UgDpP7dWE1db1iKAyIawXx55S3R/TCRb1oqc1FYBRBkfYSo+0nfDsrjX54WBrBIe+n4gs9RYXcCAwEAAaNIMEYwDgYDVR0PAQH/BAQDAgWgMBMGA1UdJQQMMAoGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFCSyuCYJ2Azq7zmtHDlQy82TV9fGMA0GCSqGSIb3DQEBCwUAA4ICAQCYoM2xGfT3usRZPFT++yH20hlabrIHn4OVw/KgthSgikuSeQSuXmhaoUbmCbOP3xNLyOgi0RAEDq76DpCDzMkw/Iz+bT1JAjDaqWt0cJaC3SESvvs4JNr6bMaCvbrVE5emRf403NhihUNkwzs4FZVph5utJhhFvfGQfPnXI4DY1FGV5OF44NjcyjNVY/UhotIz/qWQ90yOzbBURW4ltMGNlT5ZPdM6k0mG/CXYT7NkjPaYdFZPhAtIn++lVwukn9IE0DN+YtyfjVLWzN6qalbMKe+5LLa9dGnIRM3gUay0sCF3tJY3FFIynXRnb62RAdvDYUF1gSpBINsWj+tCSopCw0YxuU4KNqeh9u94a4+aJij4Re3tHmOthDpQ2BO2gQ5cpPuR8Pi1CttpEPQtl+8BIwLAEKiEgZRQGdB22P1tXRykfkZRYswGnaNICVimfb50jR+X3Jw7dOT0mIHhL3ypqNIrQD/uX4jArO1a2WWR73dBRuq8M+kHr1gUXFHByVUTYcbO7yyVBUWeMFzqeqqijhEvJrSPlJA7VWSC9eHtQ25O6hmO4V/sXgpNSFGTjoDPPCDa3EyAi6o7BnhgCv0I1xzan4ga7Yh+kE72kjsUaiA34pJUQ2h6CWZik6CBIYjYTSX1BbjJDGPL6MeJrnu/pUEoxnSQaVntfw3b7qdmDQ==</X509Certificate>
+</X509Data>
+</KeyInfo>
+</KeyDescriptor>
+</AttributeAuthorityDescriptor>
+</EntityDescriptor>
