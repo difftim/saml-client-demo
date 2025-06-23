@@ -21,22 +21,51 @@ func hello(w http.ResponseWriter, r *http.Request) {
 	// 记录会话中的属性
 	log.Println("用户成功认证，会话属性:")
 
-	// 记录所有可用的属性
+	// 记录所有可用的属性 - 使用IdP元数据中定义的属性名称
 	ctx := r.Context()
 	log.Printf("  NameID: %s", samlsp.AttributeFromContext(ctx, "name_id"))
 	log.Printf("  SessionIndex: %s", samlsp.AttributeFromContext(ctx, "session_index"))
-	log.Printf("  DisplayName: %s", samlsp.AttributeFromContext(ctx, "displayName"))
-	log.Printf("  Email: %s", samlsp.AttributeFromContext(ctx, "email"))
-	log.Printf("  CommonName: %s", samlsp.AttributeFromContext(ctx, "cn"))
-	log.Printf("  SubjectID: %s", samlsp.AttributeFromContext(ctx, "urn:oasis:names:tc:SAML:attribute:subject-id"))
+	log.Printf("  Email: %s", samlsp.AttributeFromContext(ctx, "Email"))
+	log.Printf("  SurName: %s", samlsp.AttributeFromContext(ctx, "SurName"))
+	log.Printf("  FirstName: %s", samlsp.AttributeFromContext(ctx, "FirstName"))
+	log.Printf("  FullName: %s", samlsp.AttributeFromContext(ctx, "FullName"))
+	log.Printf("  UserName: %s", samlsp.AttributeFromContext(ctx, "UserName"))
+	log.Printf("  UserID: %s", samlsp.AttributeFromContext(ctx, "UserID"))
 
-	displayName := samlsp.AttributeFromContext(r.Context(), "displayName")
+	// 尝试从会话中获取所有属性
+	if session := samlsp.SessionFromContext(ctx); session != nil {
+		log.Println("会话信息:")
+		log.Printf("  会话类型: %T", session)
+
+		// 检查是否是SessionWithAttributes类型
+		if sessionWithAttrs, ok := session.(samlsp.SessionWithAttributes); ok {
+			log.Println("会话中的属性:")
+			attrs := sessionWithAttrs.GetAttributes()
+			for name, values := range attrs {
+				log.Printf("  %s: %v", name, values)
+			}
+		} else {
+			log.Println("警告: 会话不支持属性接口")
+		}
+	} else {
+		log.Println("警告: 无法从上下文中获取会话")
+	}
+
+	// 尝试获取用户显示名称，优先使用FullName，如果没有则使用UserName
+	displayName := samlsp.AttributeFromContext(r.Context(), "FullName")
+	if displayName == "" {
+		displayName = samlsp.AttributeFromContext(r.Context(), "UserName")
+	}
+	if displayName == "" {
+		displayName = "未知用户"
+	}
+
 	log.Printf("用户访问 hello 页面: %s", displayName)
-	fmt.Fprintf(w, "Hello, Saml2.0 %s!", displayName)
+	fmt.Fprintf(w, "Hello,  %s!", displayName)
 }
 
 func logout(w http.ResponseWriter, r *http.Request) {
-	nameID := samlsp.AttributeFromContext(r.Context(), "urn:oasis:names:tc:SAML:attribute:subject-id")
+	nameID := samlsp.AttributeFromContext(r.Context(), "name_id")
 	url, err := samlMiddleware.ServiceProvider.MakeRedirectLogoutRequest(nameID, "")
 	if err != nil {
 		log.Printf("创建登出请求错误: %v", err)
