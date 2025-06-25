@@ -119,7 +119,7 @@ func main() {
 	log.Printf("成功加载IdP元数据")
 
 	//
-	rootURL, err := url.Parse("http://localhost:7777/sso/")
+	rootURL, err := url.Parse("https://srv.bdb.im/sso/")
 	if err != nil {
 		log.Fatalf("解析根URL错误: %v", err)
 	}
