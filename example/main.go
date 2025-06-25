@@ -2,6 +2,7 @@
 package main
 
 import (
+	"context"
 	"crypto/rsa"
 	"crypto/tls"
 	"crypto/x509"
@@ -104,19 +105,15 @@ func main() {
 		log.Fatalf("解析证书错误: %v", err)
 	}
 
-	// 从本地文件加载IdP元数据
-	log.Printf("正在从本地文件加载IdP元数据")
-	metadataBytes, err := os.ReadFile("prod-saml-metadata.xml")
+	idpMetadataURL, err := url.Parse("https://sso.test.biuel.com/saml/v2/metadata")
 	if err != nil {
-		log.Fatalf("读取IdP元数据文件错误: %v", err)
+		log.Fatalf("解析IdP元数据URL错误: %v", err)
 	}
-
-	idpMetadata, err := samlsp.ParseMetadata(metadataBytes)
+	idpMetadata, err := samlsp.FetchMetadata(context.Background(), http.DefaultClient,
+		*idpMetadataURL)
 	if err != nil {
-		log.Fatalf("解析IdP元数据错误: %v", err)
+		log.Fatalf("获取IdP元数据错误: %v", err)
 	}
-
-	log.Printf("成功加载IdP元数据")
 
 	//
 	rootURL, err := url.Parse("https://srv.bdb.im/sso/")
