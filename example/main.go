@@ -106,7 +106,7 @@ func main() {
 
 	// 从本地文件加载IdP元数据
 	log.Printf("正在从本地文件加载IdP元数据")
-	metadataBytes, err := os.ReadFile("prod-saml-metadata.xml")
+	metadataBytes, err := os.ReadFile("local-saml-metadata.xml")
 	if err != nil {
 		log.Fatalf("读取IdP元数据文件错误: %v", err)
 	}
@@ -119,7 +119,7 @@ func main() {
 	log.Printf("成功加载IdP元数据")
 
 	//
-	rootURL, err := url.Parse("https://srv.bdb.im/sso/")
+	rootURL, err := url.Parse("http://localhost:7777/sso/")
 	if err != nil {
 		log.Fatalf("解析根URL错误: %v", err)
 	}
